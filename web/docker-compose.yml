@@ -8,7 +8,7 @@ services:
     env_file:
       - ".env"
     ports:
-      - "5432:5432"
+      - "8085:5432"
   web:
     build: .
     volumes:
