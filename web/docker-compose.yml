@@ -15,7 +15,8 @@ services:
       - .:/app
     ports:
       - "3000:3000"
+    command: bundle exec rails server
     depends_on:
       - db
-    environment:
-      env_file: .env
+    env_file:
+      - ".env"
