@@ -70,3 +70,6 @@ yarn-debug.log*
 
 # igonre vedor file
 vendor/.keep
+
+# ignore generated erd file
+erd.pdf
