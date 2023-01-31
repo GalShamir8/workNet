@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
         :age,
         :email,
         :password,
-        :password_confirmation
+        :password_confirmation,
+        :profile_picture
       )
     end
   end
