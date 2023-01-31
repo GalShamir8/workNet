@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     case action_name
-    when :create
+    when 'create'
       configure_sign_up_params
-    when :update
+    when 'update'
       configure_account_update_params
     end
   end
