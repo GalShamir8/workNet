@@ -1,2 +1,10 @@
 <div id="<%= dom_id post %>">
+  <% post.attachments.each do |attachment| %>
+    <%= image_tag attachment %>
+  <% end %>
+
+  <p>
+    <strong>Description</strong>
+    <%= post.description %>
+  </p>
 </div>
