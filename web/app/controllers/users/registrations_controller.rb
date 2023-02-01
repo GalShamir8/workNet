@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Override Devise Users::RegistrationsController to be able extend required logic 
+# Override Devise Users::RegistrationsController to be able extend required logic
 class Users::RegistrationsController < Devise::RegistrationsController
   def update
     super do
