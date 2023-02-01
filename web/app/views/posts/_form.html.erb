@@ -11,6 +11,16 @@
     </div>
   <% end %>
 
+  <div class="field">
+    <%= form.label :description %><br />
+    <%= form.text_area :description, autofocus: true, autocomplete: "Share yout thoughts.." %>
+  </div>
+
+  <div class="field">
+    <%= form.label :attachments %><br />
+    <%= form.file_field :attachments, autofocus: true, multiple: true%>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>
