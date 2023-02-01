@@ -35,7 +35,11 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     respond_to do |format|
+      attachments = post_params.delete(:attachments)
       if @post.update(post_params)
+        attachments&.each do |attachment|
+          @post.attachments.attach(attachment)
+        end
         format.html { redirect_to post_url(@post), notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -64,6 +68,6 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:description, :attachments)
+    params.require(:post).permit(:description, attachments: [])
   end
 end
