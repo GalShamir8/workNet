@@ -1,23 +1,31 @@
+<%= stylesheet_link_tag "user-profile", "data-turbo-track": "reload" %>
 <div id="<%= dom_id user %>">
-  <%= image_tag user.profile_pictures.first %>
-  <p>
-    <strong>First name:</strong>
-    <%= user.first_name %>
-  </p>
-
-  <p>
-    <strong>Last name:</strong>
-    <%= user.last_name %>
-  </p>
-
-  <p>
-    <strong>Email:</strong>
-    <%= user.email %>
-  </p>
-
-  <p>
-    <strong>Age:</strong>
-    <%= user.age %>
-  </p>
-
+  <div class="user-profile">
+    <div class="header">
+      <h2>User Profile</h2>
+    </div>
+    <div class="profile-details">
+      <div class="profile-picture">
+        <%= image_tag user.profile_pictures.first.variant(resize: "200x200"), class: "img-responsive" if user.profile_pictures.attached? %>
+      </div>
+      <div class="user-info">
+        <div class="field">
+          <label>First Name:</label>
+          <p><%= user.first_name %></p>
+        </div>
+        <div class="field">
+          <label>Last Name:</label>
+          <p><%= user.last_name %></p>
+        </div>
+        <div class="field">
+          <label>Email:</label>
+          <p><%= user.email %></p>
+        </div>
+        <div class="field">
+          <label>Age:</label>
+          <p><%= user.age %></p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
