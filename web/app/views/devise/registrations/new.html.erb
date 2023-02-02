@@ -1,49 +1,53 @@
-<h2>Sign up</h2>
+<%= stylesheet_link_tag "registration", "data-turbo-track": "reload" %>
+<div class="form-container">
+  <div class="header">
+    <h2>Join Our Social Network</h2>
+  </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :profile_pictures %><br />
-    <%= f.file_field :profile_pictures, autofocus: true %>
-  </div>
+    <div class="form-field">
+      <%= form.label :first_name %>
+      <%= form.text_field :first_name, class: "input-field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "First Name" %>
-  </div>
+    <div class="form-field">
+      <%= form.label :last_name %>
+      <%= form.text_field :last_name, class: "input-field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "Last Name" %>
-  </div>
+    <div class="form-field">
+      <%= form.label :age %>
+      <%= form.number_field :age, class: "input-field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="form-field">
+      <%= form.label :email %>
+      <%= form.email_field :email, class: "input-field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :age %><br />
-    <%= f.number_field :age, autofocus: true, autocomplete: "Age" %>
-  </div>
+    <div class="form-field">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "input-field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="form-field">
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation, class: "input-field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="form-field">
+      <%= form.label :profile_pictures %>
+      <%= form.file_field :profile_pictures, as: :file, class: "profile-picture-upload" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= form.submit "Join", class: "submit-button" %>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <div class="footer">
+    <p>Already have an account? <%= link_to "Log in", new_session_path(resource_name) %></p>
+  </div>
+</div>
