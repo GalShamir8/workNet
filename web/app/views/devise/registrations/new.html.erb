@@ -1,53 +1,55 @@
 <%= stylesheet_link_tag "registration", "data-turbo-track": "reload" %>
-<div class="form-container">
-  <div class="header">
-    <h2>Join Our Social Network</h2>
+<body class="registration">
+  <div class="form-container">
+    <div class="header">
+      <h2>Join Our Social Network</h2>
+    </div>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="form-field">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, class: "input-field" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, class: "input-field" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :age %>
+        <%= form.number_field :age, class: "input-field" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :email %>
+        <%= form.email_field :email, class: "input-field" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :password %>
+        <%= form.password_field :password, class: "input-field" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation, class: "input-field" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :profile_pictures %>
+        <%= form.file_field :profile_pictures, as: :file, class: "profile-picture-upload" %>
+      </div>
+
+      <div class="form-actions">
+        <%= form.submit "Join", class: "submit-button" %>
+      </div>
+    <% end %>
+
+    <div class="footer">
+      <p>Already have an account? <%= link_to "Log in", new_session_path(resource_name) %></p>
+    </div>
   </div>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-    <div class="form-field">
-      <%= form.label :first_name %>
-      <%= form.text_field :first_name, class: "input-field" %>
-    </div>
-
-    <div class="form-field">
-      <%= form.label :last_name %>
-      <%= form.text_field :last_name, class: "input-field" %>
-    </div>
-
-    <div class="form-field">
-      <%= form.label :age %>
-      <%= form.number_field :age, class: "input-field" %>
-    </div>
-
-    <div class="form-field">
-      <%= form.label :email %>
-      <%= form.email_field :email, class: "input-field" %>
-    </div>
-
-    <div class="form-field">
-      <%= form.label :password %>
-      <%= form.password_field :password, class: "input-field" %>
-    </div>
-
-    <div class="form-field">
-      <%= form.label :password_confirmation %>
-      <%= form.password_field :password_confirmation, class: "input-field" %>
-    </div>
-
-    <div class="form-field">
-      <%= form.label :profile_pictures %>
-      <%= form.file_field :profile_pictures, as: :file, class: "profile-picture-upload" %>
-    </div>
-
-    <div class="form-actions">
-      <%= form.submit "Join", class: "submit-button" %>
-    </div>
-  <% end %>
-
-  <div class="footer">
-    <p>Already have an account? <%= link_to "Log in", new_session_path(resource_name) %></p>
-  </div>
-</div>
+</body>
