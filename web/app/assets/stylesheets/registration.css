@@ -70,3 +70,8 @@ body.registration {
   font-size: 16px;
   color: gray;
 }
+
+.alert {
+  font-size: 16px;
+  color: red;
+}

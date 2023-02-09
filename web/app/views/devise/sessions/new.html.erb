@@ -5,7 +5,7 @@
       <h2>Connect To WorkNet</h2>
     </div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <p class="alert"><%= flash[:alert] if flash[:alert] %></p>
       <div class="form-field">
         <%= form.label :email %>
         <%= form.email_field :email, class: "input-field" %>
