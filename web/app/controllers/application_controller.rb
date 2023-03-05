@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
       user_params.permit(
         :first_name,
         :last_name,
-        :age,
+        :birth_date,
         :email,
         :password,
         :password_confirmation,
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
       user_params.permit(
         :first_name,
         :last_name,
-        :age,
+        :birth_date,
         :email,
         :password,
         :password_confirmation,
