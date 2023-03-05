@@ -62,8 +62,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_305_172_250) do
     t.datetime 'reset_password_sent_at'
     t.datetime 'remember_created_at'
     t.date 'birth_date'
-    t.boolean 'is_admin'
+    t.boolean 'is_admin', default: false
     t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['is_admin'], name: 'is_admin_index_on_users'
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
