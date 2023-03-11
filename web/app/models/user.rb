@@ -14,6 +14,7 @@
 #  reset_password_token   :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  team_id                :bigint
 #
 # Indexes
 #
@@ -25,4 +26,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   has_many_attached :profile_pictures
   has_many :posts
+  belongs_to :team, optional: true
 end
