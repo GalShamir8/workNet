@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_311_072_149) do
+ActiveRecord::Schema[7.0].define(version: 20_230_311_072_844) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -69,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_311_072_149) do
     t.datetime 'remember_created_at'
     t.date 'birth_date'
     t.boolean 'is_admin', default: false
+    t.bigint 'team_id'
     t.index ['email'], name: 'index_users_on_email', unique: true
     t.index ['is_admin'], name: 'is_admin_index_on_users'
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
