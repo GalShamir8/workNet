@@ -7,9 +7,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-
-one:
-  name: MyString
-
-two:
-  name: MyString
+class Team < ApplicationRecord
+  has_many :users
+end
