@@ -1,10 +1,14 @@
-<div id="<%= dom_id post %>">
-  <% post.attachments.each do |attachment| %>
-    <%= image_tag attachment %>
-  <% end %>
-
-  <p>
-    <strong>Description</strong>
-    <%= post.description %>
-  </p>
+<%= stylesheet_link_tag "post-feed", "data-turbo-track": "reload" %>
+<div class="post">
+    <div class="post-image">
+      <%= image_tag post.attachments.first.variant(resize: "200x200"), class: "img-responsive" if post.attachments.attached? %>
+    </div>
+    <div class="post-info">
+      <div class="post-timestamp">
+        <%= post.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+      </div>
+      <div class="post-description">
+        <%= post.description %>
+      </div>
+    </div>
 </div>
