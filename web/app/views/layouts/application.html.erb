@@ -11,6 +11,43 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if current_user.present? %>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <%= link_to root_path, class: "navbar-brand" do %>
+            <%= image_tag("home-icon.png", height: "30", class: "d-inline-block align-text-top") %>
+          <% end %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <%= link_to user_path(current_user), class: "nav-link" do %>
+                  <%= image_tag(current_user.profile_pictures.first, height: "30", class: "rounded-circle") if current_user.profile_pictures.attached? %>
+                <% end %>
+              </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="collaps" aria-haspopup="true" aria-expanded="false">
+                  <%= image_tag("settings-icon.png", height: "30") %>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="##">Option 1</a></li>
+                  <li><a class="dropdown-item" href="#">Option 2</a></li>
+                  <li><a class="dropdown-item" href="#">Option 3</a></li>
+                  <div class="dropdown-divider"></div>
+                  <li><a class="dropdown-item" href="#">Log out</a></li>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    <% end %>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
   </body>
 </html>
