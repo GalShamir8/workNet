@@ -1,3 +1,18 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.navbar {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.nav-link:hover {
+  background-color: rgb(84, 78, 173)
+} 
+.nav-link > ul li :hover {
+  background-color: rgb(85, 74, 241)
+}
+.navbar-nav > li{
+  padding-left:30px;
+  padding-right:30px;
+}
