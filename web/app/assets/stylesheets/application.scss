@@ -6,3 +6,37 @@ body {
   background-image: url("background.avif");
   height: 100vh;
 }
+
+.navbar-default {
+  background-color: rgb(10, 116, 221);
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: black;
+}
+
+.navbar-default .navbar-header {
+  padding-right: 15px;
+  padding-top: 5px;
+}
+
+.rounded {
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.thumbnail {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+  min-width: 40%;
+  border-radius: 5px;
+}
+
+.thumbnail-description {
+  min-height: 40px;
+}
+
+.thumbnail:hover {
+  cursor: pointer;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 1);
+}

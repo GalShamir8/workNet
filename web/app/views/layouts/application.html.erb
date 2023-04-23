@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <%= render 'shared/navbar' if current_user.present? %>
     <%= yield %>
   </body>
 </html>

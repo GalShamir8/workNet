@@ -1,14 +1,30 @@
-<%= stylesheet_link_tag "post-feed", "data-turbo-track": "reload" %>
-<div class="post">
-    <div class="post-image">
-      <%= image_tag post.attachments.first.variant(resize: "200x200"), class: "img-responsive" if post.attachments.attached? %>
-    </div>
-    <div class="post-info">
-      <div class="post-timestamp">
-        <%= post.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+<div class="row">
+  <div class="col-lg-3">&nbsp;</div>
+  <div class="col-md-8">
+    <div class="row space-20">&nbsp;</div>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="thumbnail">
+          <div class="caption text-center">
+            <p>
+              <%= image_tag @user.profile_pictures.first.variant(resize: "30x30") if @user.profile_pictures.attached? %> 
+              <%= "#{@user.first_name} #{@user.last_name}".titleize %>
+            </p>              
+            <div class="thumbnail-description smaller"><%= post.description %></div>
+            <div class="position-relative">
+              <%= image_tag(post.attachments.first ,style: "width:200px;height:200px;") if post.attachments.attached?%>
+            </div>
+          </div>
+          <div class="caption card-footer text-center">
+            <ul class="list-inline">
+              <li><i class="people lighter"></i>&nbsp;7 Active Users</li>
+              <li></li>
+              <li><i class="glyphicon glyphicon-envelope lighter"></i><a href="#">&nbsp;Help</a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="post-description">
-        <%= post.description %>
-      </div>
     </div>
+    <div class="col-md-2">&nbsp;</div>
+  </div>
 </div>
