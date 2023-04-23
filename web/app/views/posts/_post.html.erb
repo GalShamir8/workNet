@@ -7,8 +7,9 @@
         <div class="thumbnail">
           <div class="caption text-center">
             <p>
-              <%= image_tag @user.profile_pictures.first.variant(resize: "30x30") if @user.profile_pictures.attached? %> 
-              <%= "#{@user.first_name} #{@user.last_name}".titleize %>
+            <%user = post.user %>
+              <%= image_tag user.profile_pictures.first.variant(resize: "30x30") if user.profile_pictures.attached? %> 
+              <%= "#{user.first_name} #{user.last_name}".titleize %>
             </p>              
             <div class="thumbnail-description smaller"><%= post.description %></div>
             <div class="position-relative">
