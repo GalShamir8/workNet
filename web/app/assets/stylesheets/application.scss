@@ -2,6 +2,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body {
+  background-image: url("background.avif");
+  height: 100vh;
+}
+
 .navbar-default {
   background-color: rgb(10, 116, 221);
 }
