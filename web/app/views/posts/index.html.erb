@@ -1,7 +1,6 @@
-<p style="color: green"><%= notice %></p>
-<h1>Posts</h1>
-
-<div id="posts">
+<div class="container" id="posts">
+  <%= button_to("create new post", new_post_path, class: 'btn btn-primary', method: :get) %>
+  <br/>
     <p>
       <%= render @posts %>
     </p>
@@ -9,4 +8,3 @@
 <%= will_paginate @posts %>
 
 <%= will_paginate @posts %>
-<%= link_to "New post", new_post_path %>
