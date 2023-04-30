@@ -29,5 +29,5 @@ class User < ApplicationRecord
   belongs_to :team, optional: true
   belongs_to :company
   has_many :post_likes, dependent: :destroy, foreign_key: :user_id
-  has_many :liked, through: :post_likes, source: :user
+  has_many :liked, through: :post_likes, source: :post
 end
