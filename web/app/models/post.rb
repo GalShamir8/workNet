@@ -19,5 +19,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many_attached :attachments
+  has_many :post_likes, dependent: :destroy, foreign_key: :post_id
+  has_many :likes, through: :post_likes, source: :post
   default_scope -> { order(created_at: :desc) }
 end
