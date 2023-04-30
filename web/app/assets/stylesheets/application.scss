@@ -40,3 +40,13 @@ body {
   cursor: pointer;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 1);
 }
+
+#post-header-list > li:last-child
+{
+  float:right;
+}
+.post-timestamp {
+  font-size: 14px;
+  color: #999;
+  margin-top: 10px;
+}
