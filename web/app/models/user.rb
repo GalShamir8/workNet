@@ -27,4 +27,5 @@ class User < ApplicationRecord
   has_many_attached :profile_pictures
   has_many :posts
   belongs_to :team, optional: true
+  belongs_to :company
 end
