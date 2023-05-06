@@ -46,7 +46,7 @@ module Posts
           }
         ]
       end
-      PostRank.insert_all(data.values) unless data.empty?
+      PostRank.upsert_all(data.values, unique_by: %i[user_id post_id]) unless data.empty?
     end
 
     def fetch_rank(user_id)
