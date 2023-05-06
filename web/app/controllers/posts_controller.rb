@@ -3,9 +3,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.where(
-      user_id: current_user.id
-    ).paginate(
+    @posts = Post.user_posts(current_user).paginate(
       page: params[:page]
     )
   end
@@ -24,9 +22,9 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params.merge(user_id: current_user.id))
-
     respond_to do |format|
       if @post.save
+        Posts::CalculatePostRank.new(post: @post).call
         format.html { redirect_to post_url(@post), notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
       else
