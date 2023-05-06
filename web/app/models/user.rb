@@ -14,13 +14,19 @@
 #  reset_password_token   :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  company_id             :bigint
 #  team_id                :bigint
 #
 # Indexes
 #
+#  index_users_on_company_id            (company_id)
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  is_admin_index_on_users              (is_admin)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (company_id => companies.id)
 #
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable

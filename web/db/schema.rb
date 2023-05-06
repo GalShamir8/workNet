@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_30_143530) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_06_105756) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -84,6 +84,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_143530) do
     t.date "birth_date"
     t.boolean "is_admin", default: false
     t.bigint "team_id"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["is_admin"], name: "is_admin_index_on_users"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -94,4 +96,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_143530) do
   add_foreign_key "post_likes", "posts"
   add_foreign_key "post_likes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "users", "companies"
 end
