@@ -3,7 +3,7 @@
 # PostsHelper
 module PostsHelper
   def post_likes(post)
-    link_to post_like_path(post), method: :post do
+    link_to post_like_path(post), method: :patch do
       [
         number_of_likes(post),
         '&nbsp;',

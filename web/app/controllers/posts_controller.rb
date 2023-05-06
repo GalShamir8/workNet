@@ -69,7 +69,7 @@ class PostsController < ApplicationController
     else
       @post.likes << current_user
     end
-    redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
   end
 
   private
