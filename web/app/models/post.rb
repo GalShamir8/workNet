@@ -21,6 +21,8 @@ class Post < ApplicationRecord
   has_many_attached :attachments
   has_many :post_likes, dependent: :destroy, foreign_key: :post_id
   has_many :likes, through: :post_likes, source: :user
+  has_many :comments
+  default_scope -> { order(created_at: :desc) }
   has_many :post_ranks, dependent: :destroy
   scope :user_posts, lambda { |user|
     joins(:user).left_joins(:post_ranks).where(
