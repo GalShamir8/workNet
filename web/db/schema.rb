@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_30_143530) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_06_104335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,6 +57,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_143530) do
     t.index ["user_id"], name: "index_post_likes_on_user_id"
   end
 
+  create_table "post_ranks", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "rank"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_post_ranks_on_post_id"
+    t.index ["user_id"], name: "index_post_ranks_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.text "description"
@@ -93,5 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_30_143530) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "post_likes", "posts"
   add_foreign_key "post_likes", "users"
+  add_foreign_key "post_ranks", "posts"
+  add_foreign_key "post_ranks", "users"
   add_foreign_key "posts", "users"
 end
