@@ -22,5 +22,13 @@ class Post < ApplicationRecord
   has_many :post_likes, dependent: :destroy, foreign_key: :post_id
   has_many :likes, through: :post_likes, source: :user
   has_many :post_ranks, dependent: :destroy
-  default_scope -> { order(created_at: :desc) }
+  scope :user_posts, lambda { |user|
+    joins(:user).left_joins(:post_ranks).where(
+      user: { company_id: user.company_id },
+      post_ranks: { user_id: user.id }
+    ).order(
+      created_at: :desc,
+      rank: :desc
+    )
+  }
 end
