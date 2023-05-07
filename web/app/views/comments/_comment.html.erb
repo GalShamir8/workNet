@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-lg-3">&nbsp;</div>
+  <div class="col-md-8">
+    <div class="row space-20">&nbsp;</div>
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="thumbnail">
+          <ul id="post-header-list" class="list-inline">
+            <% user = comment.post.user %>
+            <li><%= image_tag(user.profile_pictures.first.variant(resize: "20x20"), class: 'rounded') if user.profile_pictures.attached? %> </li>
+            <li><%= "#{user.first_name} #{user.last_name}"&.titleize %></li>            
+          </ul>
+            <div class="caption text-center">       
+              <div class="thumbnail-description smaller"><%= comment.content %></div>              
+            </div>
+          <div class="caption card-footer text-center">
+            <ul class="list-inline">
+              <li class="post-timestamp"><%= comment.created_at.strftime("%B %d, %Y at %I:%M %p") %></li>            
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">&nbsp;</div>
+  </div>
+</div>

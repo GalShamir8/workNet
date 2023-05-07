@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy like]
+  before_action :set_post_comments, only: :show
 
   # GET /posts or /posts.json
   def index
@@ -67,7 +68,6 @@ class PostsController < ApplicationController
     else
       @post.likes << current_user
     end
-    # redirect_back(fallback_location: root_path)
   end
 
   private
@@ -75,6 +75,10 @@ class PostsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def set_post_comments
+    @comments = @post.comments.paginate(page: params[:page])
   end
 
   # Only allow a list of trusted parameters through.
