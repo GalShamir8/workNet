@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy like]
+  before_action :set_post, only: %i[show edit update destroy like post_comments]
+  before_action :set_post_comments, only: :show
 
   # GET /posts or /posts.json
   def index
@@ -67,7 +68,15 @@ class PostsController < ApplicationController
     else
       @post.likes << current_user
     end
-    # redirect_back(fallback_location: root_path)
+  end
+
+  def post_comments
+    comment = @post.comments.build(post_comment_params)
+    if comment.save
+      redirect_back fallback_location: post_path(@post), notice: 'comment was successfully updated.'
+    else
+      redirect_back fallback_location: post_path(@post), alert: comment.errors
+    end
   end
 
   private
@@ -77,8 +86,16 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def set_post_comments
+    @comments = @post.comments.paginate(page: params[:page])
+  end
+
   # Only allow a list of trusted parameters through.
   def post_params
     params.require(:post).permit(:description, attachments: [])
+  end
+
+  def post_comment_params
+    params.require(:comment).permit(:content)
   end
 end

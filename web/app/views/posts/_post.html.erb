@@ -1,32 +1,28 @@
-<div class="row">
-  <div class="col-lg-3">&nbsp;</div>
-  <div class="col-md-8">
-    <div class="row space-20">&nbsp;</div>
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="thumbnail">
-          <ul id="post-header-list" class="list-inline">
-            <% user = post.user %>
-            <li><%= image_tag(user.profile_pictures.first.variant(resize: "30x30"), class: 'rounded') if user.profile_pictures.attached? %> </li>
-            <li><%= "#{user.first_name} #{user.last_name}"&.titleize %></li>
-            <li class="post-timestamp"><%= post.created_at.strftime("%B %d, %Y at %I:%M %p") %></li>
-            <li><a href=<%= edit_post_path(post) %>><i class="glyphicon glyphicon-edit lighter"></i></a></li>
-          </ul>
-            <div class="caption text-center">            
-              <div class="thumbnail-description smaller"><%= post.description %></div>
-              <div class="position-relative">
-                <%= image_tag(post.attachments.first ,style: "width:200px;height:200px;") if post.attachments.attached?%>
-              </div>
-            </div>
-          <div class="caption card-footer text-center">
-            <ul class="list-inline">
-              <li><i class="people lighter"></i>&nbsp;7 Active Users</li>
-              <li><%= post_likes(post) %></li>
-            </ul>
-          </div>
-        </div>
+<div class="thumbnail">
+  <ul id="post-header-list" class="list-inline">
+    <% user = post.user %>
+    <li><%= image_tag(user.profile_pictures.first.variant(resize: "30x30"), class: 'rounded') if user.profile_pictures.attached? %> </li>
+    <li><%= "#{user.first_name} #{user.last_name}"&.titleize %></li>
+    <li class="post-timestamp"><%= post.created_at.strftime("%B %d, %Y at %I:%M %p") %></li>
+    <li><a href=<%= edit_post_path(post) %>><i class="glyphicon glyphicon-edit lighter"></i></a></li>
+  </ul>
+    <div class="caption text-center">            
+      <div class="thumbnail-description smaller"><%= post.description %></div>
+      <div class="position-relative">
+        <%= image_tag(post.attachments.first ,style: "width:200px;height:200px;") if post.attachments.attached?%>
       </div>
     </div>
-    <div class="col-md-2">&nbsp;</div>
+  <div class="caption card-footer text-center">
+    <ul class="list-inline">
+      <li><%= post_comments(post) %></li>
+      <li><%= post_likes(post) %></li>
+    </ul>
+    <br/><br/>    
+    <%= form_for([post, post.comments.new], class: 'inline') do |f| %>
+      <%= f.text_field :content, placeholder: 'Add New Comment...', style: 'width:90%; height:40px' %>      
+      <%= button_tag type: :submit, class: 'btn btn-primary' do %>
+        <i class="glyphicon glyphicon-send"></i>
+      <% end %>
+    <% end %>
   </div>
 </div>

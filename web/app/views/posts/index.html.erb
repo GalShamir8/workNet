@@ -1,10 +1,21 @@
 <div class="container" id="posts">
   <%= button_to("create new post", new_post_path, class: 'btn btn-primary', method: :get) %>
   <br/>
-    <p>
-      <%= render @posts %>
-    </p>
-</div>
-<%= will_paginate @posts %>
-
+  <div class="container-fluid">
+    <div class="col-lg-3">&nbsp;</div>
+      <div class="col-md-8">
+        <div class="row space-20">&nbsp;</div>
+          <div class="row">
+            <div class="col-sm-10">
+                <p>
+                  <%= render @posts %>
+                </p>
+              </div>
+            </div>
+            <div class="col-md-2">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <%= will_paginate @posts %>

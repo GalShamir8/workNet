@@ -1,0 +1,7 @@
+<ul id='post-header-list' class="list-inline">
+  <% user = comment.post.user %>
+  <li><%= image_tag(user.profile_pictures.first.variant(resize: "20x20"), class: 'rounded') if user.profile_pictures.attached? %> </li>
+  <li><%= "#{user.first_name} #{user.last_name}"&.titleize %></li>   
+  <li class="thumbnail-description smaller"><%= comment.content %></li>      
+  <li class="post-timestamp"><%= time_ago_in_words comment.created_at %></li>      
+</ul>

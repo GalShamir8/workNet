@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+      <%= render user %>
+      <%= button_to(edit_user_registration_path, class: 'btn btn-secondary', method: :get) do %>
+        Edit user <i class="glyphicon glyphicon-pencil"></i>
+      <% end %>
+    </div>
+    <div class="col-sm-6">
+      <%= render user.posts %>
+    </div>
+    <div class="col-sm-2">
+      One of three columns
+    </div>
+  </div>
+</div>
