@@ -2,6 +2,12 @@
 .user-profile {
   width: 100%;
   margin: 0 auto;
+  background-color: rgb(74, 74, 74, 0.7);
+  border-radius: 25% 10%;
+  color: white;
+  display: grid;
+  justify-content: center;
+  padding: 10px;
 }
 
 .header {
@@ -11,7 +17,6 @@
 .header h2 {
   font-size: 36px;
   font-weight: bold;
-  color: #333;
 }
 
 .profile-details {
@@ -49,5 +54,10 @@
 
 .field p {
   margin: 0;
-  color: gray;
+}
+
+.btn-edit, .btn-secondary {
+  color: black;
+  background-color: rgb(222, 222, 142, 0.4);
+  border-radius: 10%/50%;
 }

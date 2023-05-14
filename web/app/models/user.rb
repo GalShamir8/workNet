@@ -38,4 +38,8 @@ class User < ApplicationRecord
   has_many :post_likes, dependent: :destroy, foreign_key: :user_id
   has_many :liked, through: :post_likes, source: :post
   has_many :post_ranks, dependent: :destroy, foreign_key: :user_id
+
+  def close_friends
+    User.where(team_id: team_id)
+  end
 end

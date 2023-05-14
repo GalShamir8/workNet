@@ -1,0 +1,8 @@
+<div id=<%="user-close-friend-#{user.id}"%>>
+  <%= link_to "mailto:#{user.email}" do %>
+    <ul id='post-header-list' class="list-inline">
+      <li><%= image_tag(user.profile_pictures.first.variant(resize: "20x20"), class: 'rounded') if user.profile_pictures.attached? %> </li>
+      <li><%= "#{user.first_name} #{user.last_name}"&.titleize %></li>       
+    </ul>
+  <% end %>
+</div>

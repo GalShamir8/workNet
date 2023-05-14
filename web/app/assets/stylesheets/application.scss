@@ -62,3 +62,19 @@ body {
   justify-content: center;
   width: 100%;
 }
+
+.user-card {
+  border-radius: 10% 30% 50% 60%;
+  display: grid;
+  justify-content: center;
+}
+
+.expolre-user-icon {
+  font-size: 30px;
+  color: black;
+}
+
+.container-navbar-right {
+  display: flex;    
+  flex-direction: row-reverse;
+}

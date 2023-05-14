@@ -1,0 +1,8 @@
+<%= link_to user_path(user), class: "user-card card bg-info" do %>
+
+  <%= image_tag(user.profile_pictures.first.variant(resize: '80x80'), class: "rounded") if user.profile_pictures.attached? %> 
+  <div class="card-body">
+    <h5 class="card-title"><%= user.first_name %> <%= user.last_name %></h5>
+    <p class="card-text"><%= user.role %></p>
+  </div>
+<% end %>
