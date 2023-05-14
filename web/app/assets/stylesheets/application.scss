@@ -51,3 +51,14 @@ body {
   color: #999;
   margin-top: 10px;
 }
+
+.btn-secondary {
+  stroke: 4px solid black;
+}
+
+#post-new-comment > form
+{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
