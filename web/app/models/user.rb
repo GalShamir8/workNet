@@ -32,7 +32,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   has_many_attached :profile_pictures
-  has_many :posts
+  has_many :posts, dependent: :destroy
   belongs_to :team, optional: true
   belongs_to :company
   has_many :post_likes, dependent: :destroy, foreign_key: :user_id
