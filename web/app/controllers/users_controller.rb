@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.where(company: current_company)
+    @users = User.where(company: current_company).excluding(current_user)
   end
 
   # GET /users/1 or /users/1.json

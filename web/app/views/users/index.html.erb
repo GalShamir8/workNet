@@ -3,9 +3,10 @@
   <% @users.in_batches(of: 5) do |group| %>
     <div class="row">
       <% group.each do |user| %>
-          <div class="col-md-3">
+          <div class="col-sm-2">
               <%= render 'user_card', user: %>
-          </div>
+              <br/>
+          </div>          
       <% end %>
     </div>
   <% end %> 
