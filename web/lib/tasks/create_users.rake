@@ -6,7 +6,7 @@ namespace :users do
     args[:amount].to_i.times do |i|
       Rails.logger.info "Generating user ##{i + 1}"
       team = Team.find_by(name: args[:team_name]) || Team.create!(name: args[:team_name])
-      company = Company.find_by(name: args[:team_name]) || Company.create!(name: args[:team_name])
+      company = Company.find_by(name: args[:company_name]) || Company.create!(name: args[:company_name])
       password = Faker::Alphanumeric.alpha(number: 10)
       user = User.create!(
         birth_date: Faker::Date.between(from: '1960-01-01', to: Time.zone.today),
