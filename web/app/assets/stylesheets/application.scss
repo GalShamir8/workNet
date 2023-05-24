@@ -78,3 +78,15 @@ body {
   display: flex;    
   flex-direction: row-reverse;
 }
+
+.close-friends-title {
+  color: rgb(93, 93, 93);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.close-friend-card {
+  border-radius: 10%;
+  display: grid;
+  justify-content: center;
+  background-color: rgba(176, 230, 176, 0.2);
+}

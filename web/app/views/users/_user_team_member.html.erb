@@ -1,4 +1,4 @@
-<div id=<%="user-close-friend-#{user.id}"%>>
+<div class="close-friend-card" id=<%="user-close-friend-#{user.id}"%>>
   <%= link_to "mailto:#{user.email}" do %>
     <ul class="list-inline">
       <li><%= image_tag(user.profile_pictures.first.variant(resize: "25x25"), class: 'rounded') if user.profile_pictures.attached? %> </li>
