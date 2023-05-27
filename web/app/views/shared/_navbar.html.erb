@@ -41,8 +41,8 @@
         <form class="navbar-form navbar-right">
           <%= form_tag(request.path, method: :get) do %>
             <div class="form-group">
-              <%= search_field_tag :query, params[:query], placeholder: "Search", class: "form-control" %>
-              <%= button_tag "Search", class: "btn btn-default" %> 
+              <%= search_field_tag :query, params[:query], placeholder: "Search", class: "form-control search" %>
+              <%= button_tag "Search", class: "btn btn-default", id: "submit" %> 
             </div>
           <% end %>            
         </form>

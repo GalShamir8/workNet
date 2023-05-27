@@ -15,3 +15,9 @@ $(document).ready(function() {
     return $(window).scroll();
   }
 });
+
+$(document).ready(function() {
+  $(document).on('change textInput input', '.search', function() {  
+    document.getElementById("submit").click()
+  });
+});
