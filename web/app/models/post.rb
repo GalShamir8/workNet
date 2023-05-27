@@ -33,4 +33,16 @@ class Post < ApplicationRecord
       rank: :desc
     )
   }
+
+  include MeiliSearch::Rails
+  meilisearch do
+    attribute :id, :description, :user_id, :created_at
+    attribute :user_name do
+      user&.full_name
+    end
+
+    searchable_attributes %i[description user_name]
+    filterable_attributes %i[user_name]
+    sortable_attributes %i[created_at]
+  end
 end

@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = User.where(company: current_company).excluding(current_user)
+    @users = fetch_users
   end
 
   # GET /users/1 or /users/1.json
@@ -21,6 +21,18 @@ class UsersController < ApplicationController
   def edit; end
 
   private
+
+  def fetch_users
+    if params[:query].present?
+      Meilisearch::SearchAdapterService.new(
+        query: params[:query],
+        filter: "company_id=#{current_company.id}",
+        model_name: 'User'
+      ).call
+    else
+      User.where(company: current_company).excluding(current_user)
+    end
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_user

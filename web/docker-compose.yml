@@ -20,3 +20,12 @@ services:
       - db
     env_file:
       - ".env"
+  meilisearch:
+    image: getmeili/meilisearch:v0.29
+    ports:
+      - "7772:7700"
+    volumes:
+      - ./tmp/storage/meilisearch:/tmp/meilisearch
+    env_file:
+      - ".env.sample"
+      - ".env"

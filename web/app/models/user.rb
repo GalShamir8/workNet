@@ -39,7 +39,26 @@ class User < ApplicationRecord
   has_many :liked, through: :post_likes, source: :post
   has_many :post_ranks, dependent: :destroy, foreign_key: :user_id
 
+  include MeiliSearch::Rails
+  meilisearch do
+    attribute :id, :first_name, :last_name, :created_at, :email, :company_id
+    attribute :full_name do
+      full_name
+    end
+    attribute :team_name do
+      full_name
+    end
+
+    searchable_attributes %i[first_name last_name email full_name team_name]
+    filterable_attributes %i[full_name first_name last_name company_id]
+    sortable_attributes %i[created_at]
+  end
+
   def close_friends
-    User.where(team_id: team_id)
+    User.where(team_id:)
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end
