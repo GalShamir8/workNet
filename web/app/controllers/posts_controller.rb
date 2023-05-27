@@ -4,9 +4,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = Post.user_posts(current_user).paginate(
-      page: params[:page]
-    )
+    @posts = fetch_posts
   end
 
   # GET /posts/1 or /posts/1.json
@@ -84,6 +82,21 @@ class PostsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def fetch_posts
+    if params[:query].present?
+      Meilisearch::SearchAdapterService.new(
+        query: params[:query],
+        model_name: 'Post',
+        page: params[:page],
+        per_page: params[:per_page]
+      ).call
+    else
+      Post.user_posts(current_user).paginate(
+        page: params[:page]
+      )
+    end
   end
 
   def set_post_comments
