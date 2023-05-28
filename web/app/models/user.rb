@@ -46,7 +46,7 @@ class User < ApplicationRecord
       full_name
     end
     attribute :team_name do
-      full_name
+      team&.name
     end
 
     searchable_attributes %i[first_name last_name email full_name team_name]
