@@ -27,10 +27,9 @@ namespace :users do
   def random_picture
     conn = Faraday.new(
       url: 'https://this-person-does-not-exist.com',
-      params: { age: '20-60' },
       headers: { 'Content-Type' => 'application/json' }
     )
-    response = conn.get('/new')
+    response = conn.get('/new?age=35-50')
     return nil unless response.success?
 
     domain = 'this-person-does-not-exist.com'
