@@ -25,7 +25,12 @@ namespace :users do
     end
   end
   def random_picture
-    response = Faraday.get('https://this-person-does-not-exist.com/new')
+    conn = Faraday.new(
+      url: 'https://this-person-does-not-exist.com',
+      params: { age: '20-60' },
+      headers: { 'Content-Type' => 'application/json' }
+    )
+    response = conn.get('/new')
     return nil unless response.success?
 
     domain = 'this-person-does-not-exist.com'
