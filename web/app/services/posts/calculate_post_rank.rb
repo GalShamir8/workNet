@@ -67,14 +67,9 @@ module Posts
       end
     end
 
+    # RODO: add department
     def department_rank
-      User.where(
-        department_id: @post.user.department_id
-      ).select(
-        :id
-      ).group_by(&:id).transform_values do |_u_arr|
-        RANKS[:department]
-      end
+      {}
     end
 
     def like_rank
