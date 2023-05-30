@@ -107,8 +107,17 @@ body {
 .messages-container {
   display: flex;
   justify-content: center;
+  padding: 10px;
 }
 
 .posts-main-page {
+  width: 100%;
+}
+
+#company-messages-list {
+  background-color: rgba(49, 51, 48, 0.2);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   width: 100%;
 }
