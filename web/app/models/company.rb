@@ -10,4 +10,5 @@
 class Company < ApplicationRecord
   has_many :users, dependent: :destroy
   has_many :links, dependent: :destroy
+  has_many :company_messages, dependent: :destroy
 end

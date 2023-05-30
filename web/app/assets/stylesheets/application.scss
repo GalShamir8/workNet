@@ -90,3 +90,25 @@ body {
   justify-content: left;
   background-color: rgba(176, 230, 176, 0.2);
 }
+
+.links-container {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(71, 143, 60, 0.2);
+  border-radius: 10%;
+  right: 5px;
+}
+
+.link-href{
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.messages-container {
+  display: flex;
+  justify-content: center;
+}
+
+.posts-main-page {
+  width: 100%;
+}

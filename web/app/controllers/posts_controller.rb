@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy like post_comments]
   before_action :set_post_comments, only: :show
+  before_action :set_links, only: :index
+  before_action :set_company_messages, only: :index
 
   # GET /posts or /posts.json
   def index
@@ -83,6 +85,14 @@ class PostsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def set_links
+    @links = Link.where(company: current_company)
+  end
+
+  def set_company_messages
+    @company_messages = CompanyMessage.where(company: current_company)
   end
 
   def fetch_posts

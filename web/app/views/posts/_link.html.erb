@@ -1,0 +1,12 @@
+<div id="links-list">
+  <h3 class="close-friends-title link"><i class="glyphicon glyphicon-link"></i> Useful Links</h3>
+  <ul class="list-group">
+    <% links.each do |link| %>
+      <%= link_to link.href do %>
+        <ul class="list-inline">          
+          <li class="link-href"><%= link.name %></li>       
+        </ul>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
