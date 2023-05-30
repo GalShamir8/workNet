@@ -4,7 +4,9 @@
     <li><%= image_tag(user.profile_pictures.first.variant(resize: "30x30"), class: 'rounded') if user.profile_pictures.attached? %> </li>
     <li><%= "#{user.first_name} #{user.last_name}"&.titleize %></li>
     <li class="post-timestamp"><%= post.created_at.strftime("%B %d, %Y at %I:%M %p") %></li>
-    <li><a href=<%= edit_post_path(post) %>><i class="glyphicon glyphicon-edit lighter"></i></a></li>
+    <% if current_user?(user) %>
+      <li><a href=<%= edit_post_path(post) %>><i class="glyphicon glyphicon-edit lighter"></i></a></li>
+    <% end %>
   </ul>
     <div class="caption text-center">            
       <div class="thumbnail-description smaller"><%= post.description %></div>
