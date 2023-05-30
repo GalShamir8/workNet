@@ -70,7 +70,7 @@ class PostsController < ApplicationController
   end
 
   def post_comments
-    comment = @post.comments.build(post_comment_params)
+    comment = @post.comments.build(post_comment_params.merge(user: current_user))
     if comment.save
       redirect_back fallback_location: post_path(@post), notice: 'comment was successfully updated.'
     else
