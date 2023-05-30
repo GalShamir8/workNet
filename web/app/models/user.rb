@@ -55,7 +55,7 @@ class User < ApplicationRecord
   end
 
   def close_friends
-    User.where(team_id:)
+    User.where(team_id:).excluding(self)
   end
 
   def full_name
