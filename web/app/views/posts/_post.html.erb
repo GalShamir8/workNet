@@ -11,7 +11,7 @@
     <div class="caption text-center">            
       <div class="thumbnail-description smaller"><%= post.description %></div>
       <div class="position-relative">
-        <%= image_tag(post.attachments.first ,style: "width:200px;height:200px;") if post.attachments.attached?%>
+        <%= image_tag(post.attachments.first ,style: "width:400px;height:400px;") if post.attachments.attached?%>
       </div>
     </div>
   <div class="caption card-footer text-center">
