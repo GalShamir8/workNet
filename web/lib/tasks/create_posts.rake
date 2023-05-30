@@ -6,7 +6,11 @@ namespace :posts do
     args[:amount].to_i.times do
       User.all.sample(5).each do |u|
         args[:amount].to_i.times do
-          post = Post.create!(description: Faker::Lorem.sentence, user_id: u.id)
+          post = Post.create!(
+            description: Faker::Lorem.sentence,
+            user_id: u.id,
+            created_at: Faker::Time.between(from: 2.hours.ago, to: Time.now)
+          )
           Posts::CalculatePostRank.new(post:).call
           img = random_picture
           post.attachments.attach(**img) if img.present?
@@ -16,7 +20,7 @@ namespace :posts do
   end
 
   def random_picture
-    img_url = Faker::LoremFlickr.image
+    img_url = Faker::LoremFlickr.colorized_image(size: "400x400")
     filename = img_url.split.last
     downloanded_img = URI.open(img_url)
     { io: downloanded_img, filename: }
