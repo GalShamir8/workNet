@@ -16,6 +16,7 @@ $(document).ready(function() {
   }
 });
 
+// search results on text input change
 $(document).ready(function() {
   $(document).on('change textInput input', '.search', function() {  
     document.getElementById("submit").click()
