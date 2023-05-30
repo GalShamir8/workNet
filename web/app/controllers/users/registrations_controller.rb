@@ -15,6 +15,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def require_admin
-    return head :unauthorized if current_user.nil? || !admin?
+    return redirect_back fallback_location: root_path if current_user.nil? || !admin?
   end
 end
