@@ -1,8 +1,8 @@
 <%= stylesheet_link_tag "login", "data-turbo-track": "reload" %>
-<body class="login">
+<body class="login">  
   <div class="form-container">
-    <div class="header">
-      <h2>Connect To WorkNet</h2>
+    <div class="header">      
+      <%= image_tag 'worknet-logo.jpeg', size: "300x80" %>
     </div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
       <p class="alert"><%= flash[:alert] if flash[:alert] %></p>
