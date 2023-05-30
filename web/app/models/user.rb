@@ -34,6 +34,7 @@ class User < ApplicationRecord
   has_many_attached :profile_pictures
   has_many :posts, dependent: :destroy
   belongs_to :team, optional: true
+  belongs_to :department, optional: true
   belongs_to :company
   has_many :post_likes, dependent: :destroy, foreign_key: :user_id
   has_many :liked, through: :post_likes, source: :post
