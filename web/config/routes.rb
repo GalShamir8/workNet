@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :posts
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
-  resources :users
+  resources :users, only: %w[index show]
 
   patch 'posts/:id/like', to: 'posts#like', as: 'post_like'
   post 'posts/:id/post_comments', to: 'posts#post_comments', as: 'post_comments'

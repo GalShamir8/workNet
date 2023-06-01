@@ -63,6 +63,12 @@ class User < ApplicationRecord
     User.where(team_id:).excluding(self)
   end
 
+  def age
+    return nil unless birth_date
+
+    ((Time.zone.now - birth_date.to_time) / ActiveSupport::Duration::SECONDS_PER_YEAR).floor
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
