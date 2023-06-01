@@ -1,65 +1,80 @@
 <%= stylesheet_link_tag "registration", "data-turbo-track": "reload" %>
 <body class="registration">
 <div class="form-container">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |form| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field">
-        <%= f.label :profile_pictures %><br />
-        <%= f.file_field :profile_pictures, autofocus: true %>
+      <div class="form-field">
+        <%= form.label :first_name %>
+        <%= form.text_field :first_name, class: "input-field" %>
       </div>
 
-      <div class="field">
-        <%= f.label :first_name %><br />
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "First Name" %>
+      <div class="form-field">
+        <%= form.label :last_name %>
+        <%= form.text_field :last_name, class: "input-field" %>
       </div>
 
-      <div class="field">
-        <%= f.label :last_name %><br />
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "Last Name" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="form-field">
+        <%= form.label :email %>
+        <%= form.email_field :email, class: "input-field" %>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
 
-      <div class="field">
-        <%= f.label :birth_date %>
-        <%= f.date_field :birth_date, class: "datepicker" %>
-      </div>
-
-      <div class="field">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-        <%= f.password_field :password, autocomplete: "new-password" %>
+      <div class="form-field">
+        <%= form.label :password %> <i>(leave blank if you don't want to change it)</i><br/>
+        <%= form.password_field :password, class: "input-field" %>
         <% if @minimum_password_length %>
           <br />
           <em><%= @minimum_password_length %> characters minimum</em>
         <% end %>
       </div>
 
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <div class="form-field">
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation, class: "input-field" %>
       </div>
 
-      <div class="field">
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "current-password" %>
+      <div class="form-field">
+        <%= form.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
+        <%= form.password_field :current_password, class: "input-field" %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Update" %>
+      <div class="form-field">
+        <%= form.hidden_field :company_id, value: current_company.id, class: "select-field" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :department_id %>
+        <%= form.select :department_id, departments_collection, include_blank: true, class: "select-field" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :team_id %>
+        <%= form.select :team_id, teams_collection, include_blank: true, class: "select-field" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :role %>
+        <%= form.text_field :role, class: "input-field" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :birth_date %>
+        <%= form.date_field :birth_date, class: "datepicker" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :profile_pictures %>
+        <%= form.file_field :profile_pictures, as: :file, class: "profile-picture-upload" %>
+      </div>
+
+      <div class="form-actions">
+        <%= form.submit "Update", class: "submit-button" %>
       </div>
     <% end %>
-
-    <h3>Cancel my account</h3>
-
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
     <%= link_to "Back", :back %>
   </div>
