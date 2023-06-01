@@ -40,6 +40,7 @@ class ApplicationController < ActionController::Base
         :email,
         :password,
         :password_confirmation,
+        :department_id,
         profile_pictures: []
       )
     end
