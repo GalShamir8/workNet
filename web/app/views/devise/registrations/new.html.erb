@@ -18,11 +18,6 @@
         <%= form.text_field :last_name, class: "input-field" %>
       </div>
 
-      <div class="field">
-        <%= form.label :birth_date %>
-        <%= form.date_field :birth_date, class: "datepicker" %>
-      </div>
-
       <div class="form-field">
         <%= form.label :email %>
         <%= form.email_field :email, class: "input-field" %>
@@ -39,8 +34,27 @@
       </div>
 
       <div class="form-field">
-        <%= form.label :department %>
-        <%= form.select :department_id, departments_collection, class: "select-field" %>
+        <%= form.hidden_field :company_id, value: current_company.id, class: "select-field" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :department_id %>
+        <%= form.select :department_id, departments_collection, include_blank: true, class: "select-field" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :team_id %>
+        <%= form.select :team_id, teams_collection, include_blank: true, class: "select-field" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :role %>
+        <%= form.text_field :role, class: "input-field" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :birth_date %>
+        <%= form.date_field :birth_date, class: "datepicker" %>
       </div>
 
       <div class="form-field">
