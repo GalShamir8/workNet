@@ -1,8 +1,8 @@
 <%= stylesheet_link_tag "registration", "data-turbo-track": "reload" %>
 <body class="registration">
   <div class="form-container">
-    <div class="header">
-      <h2>Join Our Social Network</h2>
+    <div class="header">      
+      <%= image_tag 'worknet-logo.jpeg', size: "300x80" %>
     </div>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |form| %>
@@ -36,6 +36,11 @@
       <div class="form-field">
         <%= form.label :password_confirmation %>
         <%= form.password_field :password_confirmation, class: "input-field" %>
+      </div>
+
+      <div class="form-field">
+        <%= form.label :department %>
+        <%= form.select :department_id, departments_collection, class: "select-field" %>
       </div>
 
       <div class="form-field">
