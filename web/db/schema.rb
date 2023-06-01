@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_184150) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_01_020700) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -132,7 +132,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_184150) do
     t.bigint "team_id"
     t.bigint "company_id"
     t.string "role"
+    t.bigint "department_id"
     t.index ["company_id"], name: "index_users_on_company_id"
+    t.index ["department_id"], name: "index_users_on_department_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["is_admin"], name: "is_admin_index_on_users"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
@@ -150,4 +152,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_184150) do
   add_foreign_key "post_ranks", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "users", "companies"
+  add_foreign_key "users", "departments"
 end
