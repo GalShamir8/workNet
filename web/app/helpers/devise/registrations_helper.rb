@@ -3,6 +3,6 @@
 # RegistrationsHelper
 module Devise::RegistrationsHelper
   def departments_collection
-    Department.joins(:users).where(users: { company: current_company }).pluck(:name, :id)
+    Department.joins(:users).where(users: { company: current_company }).distinct(:name).pluck(:name, :id)
   end
 end
