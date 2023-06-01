@@ -43,6 +43,7 @@ class ApplicationController < ActionController::Base
         :role,
         :department_id,
         :company_id,
+        :team_id,
         :profile_pictures
       )
     end
@@ -58,6 +59,10 @@ class ApplicationController < ActionController::Base
         :password,
         :password_confirmation,
         :current_password,
+        :role,
+        :department_id,
+        :company_id,
+        :team_id,
         :profile_pictures
       )
     end
