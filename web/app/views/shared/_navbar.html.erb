@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid"> 
     <div class="navbar-header">
-      <a>
+      <a >
         <%= link_to user_path(current_user) do %>
           <%= image_tag(current_user.profile_pictures.first.variant(resize: "50x50"), class: "rounded") if current_user.profile_pictures.attached? %>
         <% end %>
@@ -11,23 +11,32 @@
     <div class="navbar-brand">
       <a>
         <%= link_to root_path do %>
-          <%= image_tag 'home-icon.png', width: "30", height: "30", class: "d-inline-block align-center", alt: "" %>
+          <%= image_tag 'home-icon.png', width: "30", height: "30", class: "d-inline-block align-center" %>
         <% end %>
     </div>
 
     <div class="navbar-brand">
       <a>
         <%= link_to users_path do %>
-          <i class="expolre-user-icon glyphicon glyphicon-th d-inline-block align-center"></i>
+          <i class="expolre-user-icon glyphicon glyphicon-th d-inline-block align-center" title="Explore Users"></i>
         <% end %>
     </div>
 
     <div class="navbar-brand">
       <a>
         <%= link_to new_post_path do %>
-          <i class="expolre-user-icon glyphicon glyphicon-plus d-inline-block align-center"></i>
+          <i class="expolre-user-icon glyphicon glyphicon-plus d-inline-block align-center" title="Create New Post"></i>
         <% end %>
     </div>
+
+    <% if admin? %>
+      <div class="navbar-brand">
+        <a>
+          <%= link_to new_user_registration_path do %>
+            <i class="expolre-user-icon glyphicon glyphicon-user d-inline-block align-center" title="Create New User"></i>
+          <% end %>
+      </div>
+    <% end %>
 
     <div class="collapse navbar-collapse d-flex" id="bs-example-navbar-collapse-1">      
       <div class="container-navbar-right">
