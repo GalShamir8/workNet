@@ -1,0 +1,19 @@
+<div class="links-container">
+  <ul class="list-inline">
+    <li>
+      <h3 class="useful-links-title"><i class="glyphicon glyphicon-link"></i> Useful Links</h3>
+    </li>
+    <li>
+      <% if admin? %>
+        <%= link_to new_link_path do %>
+          <i class='glyphicon glyphicon-plus-sign new-link-icon' title="Create New Link"></i>
+        <% end %>
+      <% end %>
+    </li> 
+    <div id="links-list">
+      <ul class="list-group">
+        <%= render @links %>
+      </ul>
+    </div>
+  </ul>
+</div>

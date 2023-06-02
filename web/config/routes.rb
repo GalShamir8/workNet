@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :posts
+  resources :links, only: %w[new create index]
   devise_for :users, controllers: { registrations: 'users/registrations' }
-
   resources :users, only: %w[index show]
 
   patch 'posts/:id/like', to: 'posts#like', as: 'post_like'
