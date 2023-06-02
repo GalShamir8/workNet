@@ -1,0 +1,15 @@
+<div class="list-group-item message-container">
+  <ul class="list-inline">
+    <li><h3 class="company-message-title"> <%= company_message.title %></h3></li>
+    <% if admin? %>
+      <li class="link-delete-container">
+        <%= link_to(company_message, method: :delete) do %>
+          <i class="glyphicon glyphicon-trash link-delete-icon" title="Delete Message"></i>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+  <div class="company-message-content">
+    <%= company_message.content %>
+  </div>
+</div> 

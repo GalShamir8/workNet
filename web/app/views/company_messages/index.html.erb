@@ -1,0 +1,16 @@
+<div id="company-messages-list">
+<ul class="list-inline">
+  <li>
+    <h3 class="company-messages-title"><i class="glyphicon glyphicon-envelope"></i> Company Messages</h3>
+  </li>
+  <li class="new-company-messages-icon-container">
+    <% if admin? %>
+      <%= link_to new_company_message_path do %>
+        <i class='glyphicon glyphicon-plus new-company-messages-icon' title="Create New Message"></i>
+      <% end %>
+    <% end %>
+  </li> 
+  <ul class="list-group company-messages-container">
+    <%= render @company_messages %>    
+  </ul>
+</div>

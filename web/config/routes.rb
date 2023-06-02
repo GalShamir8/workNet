@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :posts
   resources :links, only: %w[new create index destroy]
+  resources :company_messages, only: %w[new create index destroy]
   devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :users, only: %w[index show]
 
