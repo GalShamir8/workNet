@@ -44,7 +44,8 @@ class ApplicationController < ActionController::Base
         :department_id,
         :company_id,
         :team_id,
-        :profile_pictures
+        :profile_pictures,
+        :is_admin
       )
     end
   end
