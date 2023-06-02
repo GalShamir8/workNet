@@ -1,8 +1,10 @@
 <ul class="list-inline">
   <li class="link-href"><%= link_to link.name, link.href %></li>
-  <li class="link-delete-container">
-    <%= link_to(link_path(link), method: :delete) do %>
-      <i class="glyphicon glyphicon-trash link-delete-icon"></i>
-    <% end %>
-  </li>
+  <% if admin? %>
+    <li class="link-delete-container">
+      <%= link_to(link_path(link), method: :delete) do %>
+        <i class="glyphicon glyphicon-trash link-delete-icon"></i>
+      <% end %>
+    </li>
+  <% end %>
 </ul>
