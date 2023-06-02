@@ -4,8 +4,28 @@
     <li><%= image_tag(user.profile_pictures.first.variant(resize: "30x30"), class: 'rounded') if user.profile_pictures.attached? %> </li>
     <li><%= "#{user.first_name} #{user.last_name}"&.titleize %></li>
     <li class="post-timestamp"><%= post.created_at.strftime("%B %d, %Y at %I:%M %p") %></li>
+
     <% if current_user?(user) %>
-      <li><a href=<%= edit_post_path(post) %>><i class="glyphicon glyphicon-edit lighter"></i></a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <i class="glyphicon glyphicon-option-vertical"></i>
+        </a>
+        <ul class="dropdown-menu post-menu">        
+          <li>
+            <ul class="list-inline">
+              <li><i class="glyphicon glyphicon-edit lighter"></i></li>
+              <li><%= link_to "Edit Post", edit_post_path(post)%></li>
+            </ul>
+          </li>        
+          <li role="separator" class="divider"></li>
+          <li>
+            <ul class="list-inline">
+              <li><i class="glyphicon glyphicon-trash"></i></li>
+              <li><%= link_to("Delete Post", post_path(post), method: :delete) %></li>
+            </ul>            
+          </li>
+        </ul>
+      </li>
     <% end %>
   </ul>
     <div class="caption text-center">            
