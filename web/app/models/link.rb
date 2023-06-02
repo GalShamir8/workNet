@@ -19,4 +19,6 @@
 #
 class Link < ApplicationRecord
   belongs_to :company
+  validates :name, presence: true
+  validates :href, presence: true
 end

@@ -96,12 +96,31 @@ body {
   justify-content: center;
   background-color: rgba(71, 143, 60, 0.2);
   border-radius: 10%;
-  right: 5px;
+  width: 350px;
+  left: 20px;
 }
 
 .link-href{
   font-size: 18px;
   margin-bottom: 15px;
+}
+
+.useful-links-title {
+  color: rgb(93, 93, 93);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.new-link-icon { 
+  font-size: 25px;
+  display: block;
+}
+
+.link-delete-container {
+  float: right;
+}
+
+.link-delete-icon{
+  color: black;
 }
 
 .messages-container {
