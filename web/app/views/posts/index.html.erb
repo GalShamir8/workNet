@@ -1,11 +1,10 @@
-<div class="posts-container" id="posts">
+<div class="posts-container">
   <div class="container-fluid posts-main-page">
     <div class="row">
       <div class="col-sm-3 messages-container">
           <%= render template: 'company_messages/index' %>
-          
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6" id="posts">
         <%= render @posts %>
       </div>
       <div class="col-sm-3">
