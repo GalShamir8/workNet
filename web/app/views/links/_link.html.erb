@@ -2,8 +2,8 @@
   <li class="link-href"><%= link_to link.name, link.href %></li>
   <% if admin? %>
     <li class="link-delete-container">
-      <%= link_to(link_path(link), method: :delete) do %>
-        <i class="glyphicon glyphicon-trash link-delete-icon"></i>
+      <%= link_to(link, method: :delete) do %>
+        <i class="glyphicon glyphicon-trash link-delete-icon" title="Delete Link"></i>
       <% end %>
     </li>
   <% end %>
