@@ -104,9 +104,11 @@ class PostsController < ApplicationController
         per_page: params[:per_page]
       ).call
     else
-      Post.user_posts(current_user).paginate(
+      posts = Post.user_posts(current_user).paginate(
         page: params[:page]
       )
+      posts = Post.joins(:user).where(user: { company: current_company }).paginate(page: params[:page]) if posts.empty?
+      posts
     end
   end
 
