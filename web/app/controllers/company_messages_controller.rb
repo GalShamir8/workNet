@@ -3,6 +3,7 @@
 # CompanyMessagesController
 class CompanyMessagesController < ApplicationController
   before_action :set_link, only: [:destroy]
+  before_action :set_expires_in, only: [:create]
 
   def index
     @company_messages = fetch_searchable_collection(@service_info) do
@@ -46,7 +47,21 @@ class CompanyMessagesController < ApplicationController
     @company_message = CompanyMessage.find(params[:id])
   end
 
+  def set_expires_in
+    return if company_message_params[:expires_in].nil? || company_message_params[:time_option].nil?
+
+    params[:company_message][:expires_in] = Time.now + company_message_params[:expires_in].to_i.send(
+      company_message_params[:time_option]
+    )
+  end
+
   def company_message_params
-    params.require(:company_message).permit(:company_id, :content, :title)
+    params.require(:company_message).permit(
+      :company_id,
+      :content,
+      :title,
+      :expires_in,
+      :time_option
+    )
   end
 end
