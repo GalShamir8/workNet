@@ -2,7 +2,7 @@
 
 # CompanyMessagesController
 class CompanyMessagesController < ApplicationController
-  before_action :set_link, only: [:destroy]
+  before_action :set_company_message, only: [:destroy]
   before_action :set_expires_in, only: [:create]
 
   def index
@@ -43,7 +43,7 @@ class CompanyMessagesController < ApplicationController
     }
   end
 
-  def set_link
+  def set_company_message
     @company_message = CompanyMessage.find(params[:id])
   end
 
