@@ -4,7 +4,7 @@
 #
 #  id         :bigint           not null, primary key
 #  content    :text
-#  string     :string
+#  expires_in :datetime
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
