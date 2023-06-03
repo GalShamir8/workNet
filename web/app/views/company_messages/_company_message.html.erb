@@ -9,7 +9,14 @@
       </li>
     <% end %>
   </ul>
-  <div class="company-message-content">
-    <%= company_message.content %>
-  </div>
+  <ul class="list-inline">
+    <li>
+      <div class="company-message-content">
+        <%= company_message.content %>
+      </div>
+    </li>
+    <% if company_message.expires_in %>    
+      <li class="expires-in-icon-list-item"><%= expired_icon(company_message) %></li>
+    <%end%>
+  </ul>
 </div> 
