@@ -20,6 +20,7 @@
 #
 class CompanyMessage < ApplicationRecord
   belongs_to :company
+  default_scope -> { where(expires_in: Time.now..).or(where(expires_in: nil)) }
 
   include MeiliSearch::Rails
   meilisearch do
