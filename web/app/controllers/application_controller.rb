@@ -4,6 +4,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :prepare_service_info, only: :index, if: :searchable_collection?
   helper_method :current_user?
   helper_method :admin?
   helper_method :current_company
@@ -20,7 +21,24 @@ class ApplicationController < ActionController::Base
     user == current_user
   end
 
+  def fetch_searchable_collection(options)
+    if options.nil?
+      yield
+    else
+      Meilisearch::SearchAdapterService.new(query: params[:query], **options).call
+    end
+  end
+
   protected
+
+  def searchable_collection?
+    params[:query].present? &&
+      Object.const_get(controller_name.classify).include?(MeiliSearch::Rails)
+  end
+
+  def prepare_service_info
+    raise NotImplementedError, 'Method should be implemented in concrete class'
+  end
 
   def configure_permitted_parameters
     case action_name

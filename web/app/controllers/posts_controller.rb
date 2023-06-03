@@ -6,7 +6,13 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = fetch_posts
+    @posts = fetch_searchable_collection(@service_info) do
+      posts = Post.user_posts(current_user).paginate(
+        page: params[:page]
+      )
+      posts = Post.joins(:user).where(user: { company: current_company }).paginate(page: params[:page]) if posts.empty?
+      posts
+    end
   end
 
   # GET /posts/1 or /posts/1.json
@@ -95,21 +101,13 @@ class PostsController < ApplicationController
     @company_messages = CompanyMessage.where(company: current_company)
   end
 
-  def fetch_posts
-    if params[:query].present?
-      Meilisearch::SearchAdapterService.new(
-        query: params[:query],
-        model_name: 'Post',
-        page: params[:page],
-        per_page: params[:per_page]
-      ).call
-    else
-      posts = Post.user_posts(current_user).paginate(
-        page: params[:page]
-      )
-      posts = Post.joins(:user).where(user: { company: current_company }).paginate(page: params[:page]) if posts.empty?
-      posts
-    end
+  def prepare_service_info
+    @service_info = {
+      query: params[:query],
+      model_name: 'Post',
+      page: params[:page],
+      per_page: params[:per_page]
+    }
   end
 
   def set_post_comments

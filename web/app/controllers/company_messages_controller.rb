@@ -5,7 +5,9 @@ class CompanyMessagesController < ApplicationController
   before_action :set_link, only: [:destroy]
 
   def index
-    @company_messages = current_company.company_messages
+    @company_messages = fetch_searchable_collection(@service_info) do
+      current_company.company_messages
+    end
   end
 
   def new
@@ -31,6 +33,14 @@ class CompanyMessagesController < ApplicationController
   end
 
   private
+
+  def prepare_service_info
+    @service_info = {
+      query: params[:query],
+      filter: "company_id=#{current_company.id}",
+      model_name: 'CompanyMessage'
+    }
+  end
 
   def set_link
     @company_message = CompanyMessage.find(params[:id])

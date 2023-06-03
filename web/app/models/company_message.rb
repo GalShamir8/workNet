@@ -20,4 +20,13 @@
 #
 class CompanyMessage < ApplicationRecord
   belongs_to :company
+
+  include MeiliSearch::Rails
+  meilisearch do
+    attribute :id, :content, :title, :company_id, :created_at
+
+    searchable_attributes %i[content title]
+    filterable_attributes %i[content title company_id id]
+    sortable_attributes %i[created_at]
+  end
 end
