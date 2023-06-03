@@ -3,6 +3,11 @@
   <li>
     <h3 class="company-messages-title"><i class="glyphicon glyphicon-envelope"></i> Company Messages</h3>
   </li>
+  <li class="all-company-messages-icon-container">
+    <%= link_to company_messages_path do %>
+      <i class="glyphicon glyphicon-new-window" title="view all messages"></i>
+    <% end %>
+  </li>
   <li class="new-company-messages-icon-container">
     <% if admin? %>
       <%= link_to new_company_message_path do %>
