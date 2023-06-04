@@ -17,7 +17,7 @@ class LinksController < ApplicationController
       if @link.save
         format.html { redirect_to root_path, notice: 'Link was successfully created.' }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity, alert: 'Failed to create Link' }
       end
     end
   end

@@ -20,6 +20,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def sign_up(_resource_name, _resource)
+    flash[:notice] = 'User was successfully created.'
     true
   end
 end

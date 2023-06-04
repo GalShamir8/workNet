@@ -12,6 +12,7 @@
 
   <body>
     <%= render 'shared/navbar' if current_user.present? %>
+    <%= render 'shared/flash_messages' %>
     <%= render 'shared/privacy_dialog' %>
     <%= yield %>
   </body>

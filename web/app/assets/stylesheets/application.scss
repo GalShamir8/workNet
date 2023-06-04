@@ -173,3 +173,27 @@ body {
 .all-company-messages-icon-container {
   font-size: 20px;
 }
+
+.flash-message {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  padding: 10px;
+  margin-top: 20px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.success {
+  background-color: #4CAF50; /* Green */
+}
+
+.failure {
+  background-color: #f44336; /* Red */
+}
+
+.info {
+  background-color: #2196F3; /* Blue */
+}
