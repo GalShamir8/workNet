@@ -37,7 +37,6 @@ class CompanyMessagesController < ApplicationController
 
   def prepare_service_info
     @service_info = {
-      query: params[:query],
       filter: "company_id=#{current_company.id}",
       model_name: 'CompanyMessage'
     }

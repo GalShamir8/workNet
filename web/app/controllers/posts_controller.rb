@@ -103,7 +103,6 @@ class PostsController < ApplicationController
 
   def prepare_service_info
     @service_info = {
-      query: params[:query],
       model_name: 'Post',
       page: params[:page],
       per_page: params[:per_page]
