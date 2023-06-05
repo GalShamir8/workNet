@@ -197,3 +197,10 @@ body {
 .info {
   background-color: #2196F3; /* Blue */
 }
+
+.navbar-worknet-logo {
+  mix-blend-mode: multiply;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
