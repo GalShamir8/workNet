@@ -1,4 +1,4 @@
-![worknet-logo](https://github.com/GalShamir8/workNet/assets/64600215/cf8d157e-4a2c-4144-8e93-88ae59e5c06e)
+<img mix-blend-mode='multiply' src=https://github.com/GalShamir8/workNet/assets/64600215/cf8d157e-4a2c-4144-8e93-88ae59e5c06e/>
 # WorkNet
 Welcome to the README of our Internal Social Networking Platform! This document provides an in-depth overview of our platform's features, architecture, technologies, setup instructions, usage guidelines, contributing information, and licensing details.
 
